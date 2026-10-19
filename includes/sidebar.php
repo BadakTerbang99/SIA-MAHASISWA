@@ -56,40 +56,40 @@
         </div>
 
         <!-- 1. Home Dashboard -->
-        <a href="index.php" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'index' || $currentPage === '') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
+        <a href="./" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'index' || $currentPage === '') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
             <i class="fas fa-chart-pie w-5 text-center text-sm <?= ($currentPage === 'index' || $currentPage === '') ? 'text-amber-300' : 'text-slate-400'; ?>"></i>
             <span>SIA Home Dashboard</span>
         </a>
 
         <!-- 2. Jadwal Kuliah -->
-        <a href="jadwal.php" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'jadwal') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
+        <a href="jadwal" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'jadwal') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
             <i class="fas fa-calendar-alt w-5 text-center text-sm <?= ($currentPage === 'jadwal') ? 'text-amber-300' : 'text-slate-400'; ?>"></i>
             <span>Jadwal Kuliah</span>
             <span class="ml-auto text-[10px] bg-usd-900/80 px-2 py-0.5 rounded-full text-amber-300 border border-usd-600/40">18 SKS</span>
         </a>
 
         <!-- 3. Nilai Akademik -->
-        <a href="nilai.php" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'nilai') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
+        <a href="nilai" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'nilai') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
             <i class="fas fa-graduation-cap w-5 text-center text-sm <?= ($currentPage === 'nilai') ? 'text-amber-300' : 'text-slate-400'; ?>"></i>
             <span>Nilai Akademik (KHS)</span>
             <span class="ml-auto text-[10px] bg-slate-800 px-2 py-0.5 rounded-full text-slate-300 font-mono">IPK 3.33</span>
         </a>
 
         <!-- 4. Biodata -->
-        <a href="biodata.php" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'biodata') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
+        <a href="biodata" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'biodata') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
             <i class="fas fa-id-badge w-5 text-center text-sm <?= ($currentPage === 'biodata') ? 'text-amber-300' : 'text-slate-400'; ?>"></i>
             <span>Biodata Mahasiswa</span>
         </a>
 
         <!-- 5. SIA E-KTM -->
-        <a href="ektm.php" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'ektm') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
+        <a href="ektm" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'ektm') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
             <i class="fas fa-address-card w-5 text-center text-sm <?= ($currentPage === 'ektm') ? 'text-amber-300' : 'text-slate-400'; ?>"></i>
             <span>SIA E-KTM Digital</span>
             <span class="ml-auto text-[10px] bg-emerald-500/20 text-emerald-300 font-semibold px-2 py-0.5 rounded-full border border-emerald-500/30">NFC</span>
         </a>
 
         <!-- 6. Kartu Keuangan -->
-        <a href="keuangan.php" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'keuangan') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
+        <a href="keuangan" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all <?= ($currentPage === 'keuangan') ? 'bg-usd-700 text-white shadow-lg shadow-usd-900/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
             <i class="fas fa-receipt w-5 text-center text-sm <?= ($currentPage === 'keuangan') ? 'text-amber-300' : 'text-slate-400'; ?>"></i>
             <span>Kartu Keuangan</span>
             <span class="ml-auto text-[10px] bg-emerald-500/20 text-emerald-300 font-semibold px-2 py-0.5 rounded-full border border-emerald-500/30">Lunas</span>

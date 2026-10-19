@@ -44,13 +44,13 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['active_tenant_id'] = $user['tenant_id'];
 
             setFlash('success', 'Selamat datang di SIA Sanata Dharma, ' . htmlspecialchars($user['nama']) . '!');
-            header('Location: ../index.php');
+            header('Location: ../');
             exit;
         }
     }
 
     setFlash('error', 'Kombinasi NIM/Username dan Password tidak valid!');
-    header('Location: ../login.php');
+    header('Location: ../login');
     exit;
 }
 
@@ -59,9 +59,9 @@ if ($action === 'logout') {
     unset($_SESSION['logged_in_user']);
     unset($_SESSION['active_mahasiswa_id']);
     setFlash('info', 'Anda telah berhasil logout dari Portal SIA Mahasiswa.');
-    header('Location: ../login.php');
+    header('Location: ../login');
     exit;
 }
 
-header('Location: ../login.php');
+header('Location: ../login');
 exit;

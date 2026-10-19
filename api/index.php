@@ -10,6 +10,17 @@ chdir(dirname(__DIR__));
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $path = ltrim($uri, '/');
 
+// Auto-redirect URL berakhiran .php ke Clean URL yang rapi dan modern
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && substr($path, -4) === '.php' && strpos($path, 'actions/') === false) {
+    $cleanPath = substr($path, 0, -4);
+    if ($cleanPath === 'index') {
+        $cleanPath = '';
+    }
+    $query = !empty($_SERVER['QUERY_STRING']) ? ('?' . $_SERVER['QUERY_STRING']) : '';
+    header('Location: /' . $cleanPath . $query, true, 301);
+    exit;
+}
+
 // 1. Root URL atau index
 if ($path === '' || $path === 'index' || $path === 'index.php') {
     require __DIR__ . '/../index.php';

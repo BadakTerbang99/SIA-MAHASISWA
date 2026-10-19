@@ -3,7 +3,7 @@ require_once __DIR__ . '/../config/database.php';
 
 // Auth Guard: Pastikan user hanya dapat mengakses portal jika sudah login
 if (!isset($_SESSION['logged_in_user'])) {
-    header('Location: login.php');
+    header('Location: login');
     exit;
 }
 
