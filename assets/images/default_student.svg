@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280" width="100%" height="100%">
+  <!-- Clean studio student portrait illustration -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" /> <!-- Red formal academic background -->
+      <stop offset="100%" style="stop-color:#991b1b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fed7aa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fba879;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background Red Photo Canvas -->
+  <rect width="240" height="280" fill="url(#bgGrad)" />
+
+  <!-- Body / Blazer Suit -->
+  <path d="M40 280 C40 220 70 200 120 200 C170 200 200 220 200 280 Z" fill="url(#suitGrad)"/>
+  
+  <!-- White Shirt & Tie -->
+  <polygon points="100,200 120,240 140,200" fill="#ffffff" />
+  <polygon points="115,200 125,200 123,245 120,250 117,245" fill="#3b82f6" />
+  
+  <!-- Neck -->
+  <rect x="106" y="160" width="28" height="42" fill="url(#skinGrad)" rx="6"/>
+
+  <!-- Head / Face -->
+  <ellipse cx="120" cy="120" rx="46" ry="54" fill="url(#skinGrad)"/>
+
+  <!-- Hair -->
+  <path d="M72 110 C70 65 100 50 120 50 C145 50 170 65 168 110 C160 90 140 78 120 78 C95 78 80 90 72 110 Z" fill="#1e293b"/>
+  
+  <!-- Ears -->
+  <ellipse cx="73" cy="122" rx="7" ry="12" fill="url(#skinGrad)"/>
+  <ellipse cx="167" cy="122" rx="7" ry="12" fill="url(#skinGrad)"/>
+
+  <!-- Eyes & Eyebrows -->
+  <path d="M92 104 Q100 100 108 104" stroke="#1e293b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M132 104 Q140 100 148 104" stroke="#1e293b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="100" cy="114" r="4.5" fill="#1e293b"/>
+  <circle cx="140" cy="114" r="4.5" fill="#1e293b"/>
+  <circle cx="101" cy="112" r="1.5" fill="#ffffff"/>
+  <circle cx="141" cy="112" r="1.5" fill="#ffffff"/>
+
+  <!-- Nose -->
+  <path d="M117 122 Q120 132 123 122" stroke="#ea580c" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+  <!-- Smile -->
+  <path d="M106 144 Q120 156 134 144" stroke="#c2410c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- University Pin on Lapel -->
+  <circle cx="75" cy="240" r="5" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
+</svg>

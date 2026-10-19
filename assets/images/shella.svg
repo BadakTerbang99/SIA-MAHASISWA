@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#800000;stop-opacity:1" /> <!-- Maroon official USD color -->
+      <stop offset="100%" style="stop-color:#4a0000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fde047;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#fed7aa;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background Red/Maroon Studio Academic Photo Canvas -->
+  <rect width="240" height="280" fill="url(#bgGrad)" />
+
+  <!-- Long Hair Behind Shoulders -->
+  <path d="M60 110 C50 180 50 240 70 280 L170 280 C190 240 190 180 180 110 Z" fill="#18181b"/>
+
+  <!-- Blazer / Formal Suit (Navy/Black) -->
+  <path d="M40 280 C40 215 70 195 120 195 C170 195 200 215 200 280 Z" fill="url(#suitGrad)"/>
+  
+  <!-- White Blouse Inner -->
+  <polygon points="95,195 120,240 145,195" fill="#ffffff" />
+  <path d="M120 200 L120 235" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Neck -->
+  <rect x="107" y="155" width="26" height="45" fill="#fed7aa" rx="5"/>
+
+  <!-- Face -->
+  <ellipse cx="120" cy="120" rx="43" ry="50" fill="#fcd34d" opacity="0.1"/>
+  <ellipse cx="120" cy="120" rx="42" ry="49" fill="#fed7aa"/>
+
+  <!-- Female Front Hair / Fringe -->
+  <path d="M78 115 C72 65 105 52 120 52 C140 52 168 65 162 115 C150 90 135 78 120 78 C102 78 88 90 78 115 Z" fill="#27272a"/>
+  <!-- Hair Strands Framing Face -->
+  <path d="M78 115 C75 140 76 175 82 190 C84 175 82 140 82 115 Z" fill="#27272a"/>
+  <path d="M162 115 C165 140 164 175 158 190 C156 175 158 140 158 115 Z" fill="#27272a"/>
+
+  <!-- Ears & Pearl Earrings -->
+  <ellipse cx="76" cy="124" rx="5" ry="10" fill="#fed7aa"/>
+  <ellipse cx="164" cy="124" rx="5" ry="10" fill="#fed7aa"/>
+  <circle cx="76" cy="132" r="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <circle cx="164" cy="132" r="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+
+  <!-- Eyes & Delicate Eyebrows -->
+  <path d="M94 105 Q102 101 110 105" stroke="#27272a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M130 105 Q138 101 146 105" stroke="#27272a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <ellipse cx="102" cy="114" rx="4" ry="4.5" fill="#27272a"/>
+  <ellipse cx="138" cy="114" rx="4" ry="4.5" fill="#27272a"/>
+  <circle cx="103" cy="112" r="1.5" fill="#ffffff"/>
+  <circle cx="139" cy="112" r="1.5" fill="#ffffff"/>
+
+  <!-- Eyelashes -->
+  <path d="M98 109 L95 106" stroke="#27272a" stroke-width="1.5"/>
+  <path d="M142 109 L145 106" stroke="#27272a" stroke-width="1.5"/>
+
+  <!-- Soft Blush & Smile -->
+  <ellipse cx="92" cy="128" rx="7" ry="4" fill="#fb7185" opacity="0.4"/>
+  <ellipse cx="148" cy="128" rx="7" ry="4" fill="#fb7185" opacity="0.4"/>
+  <path d="M117 122 Q120 128 123 122" stroke="#ea580c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M108 143 Q120 154 132 143" stroke="#e11d48" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Golden University Pin -->
+  <circle cx="76" cy="235" r="5" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
+</svg>

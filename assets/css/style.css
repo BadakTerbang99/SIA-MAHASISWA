@@ -1,0 +1,129 @@
+/* 
+   SIA Mahasiswa - Universitas Sanata Dharma
+   Modern, Clean, Human-Crafted Design System (Non-AI Slop)
+   Informed by Higher-Ed Portals (student.ciputra.ac.id, SIMASTER, Linear, Stripe)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --usd-maroon-dark: #580a0a;
+    --usd-maroon: #7a0c0c;
+    --usd-maroon-light: #941717;
+    --usd-gold: #c59b27;
+    --usd-gold-light: #e5b945;
+    --usd-gold-subtle: #fef7e6;
+    --surface-bg: #f8fafc;
+    --border-color: #e2e8f0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--surface-bg);
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Crisp Clean Card Utilities */
+.card-clean {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.02);
+    border-radius: 1rem;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-clean:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* Quick Access Tiles - Crisp & Professional */
+.hub-tile {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.875rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: all 0.18s ease-in-out;
+}
+.hub-tile:hover {
+    transform: translateY(-2px);
+    border-color: #7a0c0c;
+    box-shadow: 0 8px 16px -4px rgba(122, 12, 12, 0.08);
+}
+.hub-tile:active {
+    transform: translateY(0);
+}
+
+/* 3D Flip Card Effect for E-KTM */
+.perspective-1000 {
+    perspective: 1000px;
+}
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+.card-flipped {
+    transform: rotateY(180deg);
+}
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.card-back {
+    transform: rotateY(180deg);
+}
+
+/* Print Styling */
+@media print {
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .no-print, header, nav, aside, footer, .btn-print-hide {
+        display: none !important;
+    }
+    .print-only {
+        display: block !important;
+    }
+    .print-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+}

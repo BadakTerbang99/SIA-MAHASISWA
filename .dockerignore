@@ -1,0 +1,5 @@
+.git
+*.zip
+Dockerfile
+.dockerignore
+cookies.txt
