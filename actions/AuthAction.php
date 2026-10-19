@@ -43,6 +43,21 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['active_mahasiswa_id'] = $user['id'];
             $_SESSION['active_tenant_id'] = $user['tenant_id'];
 
+            // Cookie persisten untuk lingkungan Serverless (Vercel)
+            $authPayload = json_encode([
+                'id' => $user['id'],
+                'nim' => $user['nim'],
+                'exp' => time() + 86400 * 7
+            ]);
+            $authHash = hash_hmac('sha256', $authPayload, 'sia_usd_secret_key_2026');
+            $authCookie = base64_encode($authPayload . '||' . $authHash);
+            setcookie('sia_auth_session', $authCookie, [
+                'expires' => time() + 86400 * 7,
+                'path' => '/',
+                'httponly' => true,
+                'samesite' => 'Lax'
+            ]);
+
             setFlash('success', 'Selamat datang di SIA Sanata Dharma, ' . htmlspecialchars($user['nama']) . '!');
             header('Location: ../');
             exit;
@@ -58,6 +73,12 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 if ($action === 'logout') {
     unset($_SESSION['logged_in_user']);
     unset($_SESSION['active_mahasiswa_id']);
+    setcookie('sia_auth_session', '', [
+        'expires' => time() - 3600,
+        'path' => '/',
+        'httponly' => true,
+        'samesite' => 'Lax'
+    ]);
     setFlash('info', 'Anda telah berhasil logout dari Portal SIA Mahasiswa.');
     header('Location: ../login');
     exit;

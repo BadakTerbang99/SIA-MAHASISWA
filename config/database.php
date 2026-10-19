@@ -444,6 +444,35 @@ if (!$currentTenant) {
     ];
 }
 
+// Pemulihan Sesi Otomatis untuk Lingkungan Serverless (Vercel)
+if (!isset($_SESSION['logged_in_user']) && isset($_COOKIE['sia_auth_session'])) {
+    $decodedCookie = base64_decode($_COOKIE['sia_auth_session']);
+    if (strpos($decodedCookie, '||') !== false) {
+        list($payloadJson, $cookieHash) = explode('||', $decodedCookie, 2);
+        $expectedHash = hash_hmac('sha256', $payloadJson, 'sia_usd_secret_key_2026');
+        if (hash_equals($expectedHash, $cookieHash)) {
+            $cookieData = json_decode($payloadJson, true);
+            if ($cookieData && isset($cookieData['id']) && ($cookieData['exp'] ?? 0) > time()) {
+                $stmtAuthMhs = $pdo->prepare("SELECT * FROM mahasiswa WHERE id = ? LIMIT 1");
+                $stmtAuthMhs->execute([$cookieData['id']]);
+                $authMhs = $stmtAuthMhs->fetch();
+                if ($authMhs) {
+                    $_SESSION['logged_in_user'] = [
+                        'id' => $authMhs['id'],
+                        'nim' => $authMhs['nim'],
+                        'nama' => $authMhs['nama'],
+                        'tenant_id' => $authMhs['tenant_id'],
+                        'foto' => $authMhs['foto'],
+                        'role' => $authMhs['role'] ?? 'mahasiswa'
+                    ];
+                    $_SESSION['active_mahasiswa_id'] = $authMhs['id'];
+                    $_SESSION['active_tenant_id'] = $authMhs['tenant_id'];
+                }
+            }
+        }
+    }
+}
+
 // Ambil User yang Sedang Login
 $currentUser = null;
 if (isset($_SESSION['logged_in_user']['id'])) {

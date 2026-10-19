@@ -10,8 +10,23 @@ chdir(dirname(__DIR__));
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $path = ltrim($uri, '/');
 
-// Auto-redirect URL berakhiran .php ke Clean URL yang rapi dan modern
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && substr($path, -4) === '.php' && strpos($path, 'actions/') === false) {
+// 1. Root URL atau index
+if ($path === '' || $path === 'index' || $path === 'index.php') {
+    require __DIR__ . '/../index.php';
+    exit;
+}
+
+// 2. Request Action Scripts (misal: actions/AuthAction.php, actions/JadwalAction.php, dll)
+if (strpos($path, 'actions/') === 0) {
+    $actionFile = __DIR__ . '/../' . $path;
+    if (file_exists($actionFile) && !is_dir($actionFile)) {
+        require $actionFile;
+        exit;
+    }
+}
+
+// 3. Auto-redirect URL berakhiran .php ke Clean URL untuk request GET di luar folder actions
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && substr($path, -4) === '.php') {
     $cleanPath = substr($path, 0, -4);
     if ($cleanPath === 'index') {
         $cleanPath = '';
@@ -21,13 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && substr($path, -4) === '.php' && strp
     exit;
 }
 
-// 1. Root URL atau index
-if ($path === '' || $path === 'index' || $path === 'index.php') {
-    require __DIR__ . '/../index.php';
-    exit;
-}
-
-// 2. Direct match file (misal: login.php, actions/AuthAction.php, dll)
+// 4. Direct match file PHP
 $target = __DIR__ . '/../' . $path;
 if (file_exists($target) && !is_dir($target)) {
     $ext = strtolower(pathinfo($target, PATHINFO_EXTENSION));
@@ -36,7 +45,7 @@ if (file_exists($target) && !is_dir($target)) {
         exit;
     }
     
-    // Static asset fallback
+    // Static asset fallback jika terlewat
     $mimes = [
         'css' => 'text/css',
         'js' => 'application/javascript',
@@ -53,16 +62,16 @@ if (file_exists($target) && !is_dir($target)) {
     exit;
 }
 
-// 3. Match tanpa ekstensi .php (misal: /login atau /jadwal atau /nilai)
+// 5. Match tanpa ekstensi .php (misal: /login, /jadwal, /nilai, /biodata, /ektm, /keuangan)
 if (file_exists($target . '.php')) {
     require $target . '.php';
     exit;
 }
 
-// 4. Fallback 404
+// 6. Fallback 404
 http_response_code(404);
 echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>404 Not Found</title></head><body style='font-family:sans-serif;text-align:center;padding:50px;'>";
 echo "<h2>Halaman Tidak Ditemukan (404)</h2>";
-echo "<p><a href='/login.php'>Masuk ke SIA Mahasiswa</a></p>";
+echo "<p><a href='/login'>Masuk ke SIA Mahasiswa</a></p>";
 echo "</body></html>";
 exit;
