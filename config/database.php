@@ -19,8 +19,17 @@ define('DB_NAME', 'sia_mahasiswa');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-// File SQLite
-define('DB_SQLITE_FILE', __DIR__ . '/../database/sia_database.sqlite');
+// File SQLite (otomatis gunakan /tmp jika berjalan di Vercel Serverless)
+if (getenv('VERCEL') || isset($_ENV['VERCEL'])) {
+    $tmpDb = '/tmp/sia_database.sqlite';
+    $srcDb = __DIR__ . '/../database/sia_database.sqlite';
+    if (!file_exists($tmpDb) && file_exists($srcDb)) {
+        copy($srcDb, $tmpDb);
+    }
+    define('DB_SQLITE_FILE', $tmpDb);
+} else {
+    define('DB_SQLITE_FILE', __DIR__ . '/../database/sia_database.sqlite');
+}
 
 class Database {
     private static $instance = null;
