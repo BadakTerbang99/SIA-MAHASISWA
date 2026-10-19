@@ -1,48 +1,57 @@
 <?php
 /**
  * Vercel Serverless PHP Router
- * Mengarahkan seluruh request Vercel ke file PHP yang sesuai di root project
+ * Router serbaguna untuk seluruh route aplikasi SIA Mahasiswa di Vercel
  */
 
-// Pindah working directory ke root project agar path relatif bekerja normal
+// Pindah working directory ke root project agar include relatif dan file database bekerja tepat
 chdir(dirname(__DIR__));
 
-$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$path = trim($requestUri, '/');
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$path = ltrim($uri, '/');
 
-// Jika akses root atau index
+// 1. Root URL atau index
 if ($path === '' || $path === 'index' || $path === 'index.php') {
     require __DIR__ . '/../index.php';
     exit;
 }
 
-// Cek apakah file yang diminta langsung ada
-$targetFile = __DIR__ . '/../' . $path;
-
-if (file_exists($targetFile) && !is_dir($targetFile)) {
-    $ext = pathinfo($targetFile, PATHINFO_EXTENSION);
+// 2. Direct match file (misal: login.php, actions/AuthAction.php, dll)
+$target = __DIR__ . '/../' . $path;
+if (file_exists($target) && !is_dir($target)) {
+    $ext = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     if ($ext === 'php') {
-        require $targetFile;
+        require $target;
         exit;
     }
-}
-
-// Cek jika tanpa ekstensi .php (misal /login)
-if (file_exists($targetFile . '.php')) {
-    require $targetFile . '.php';
+    
+    // Static asset fallback
+    $mimes = [
+        'css' => 'text/css',
+        'js' => 'application/javascript',
+        'png' => 'image/png',
+        'jpg' => 'image/jpeg',
+        'jpeg' => 'image/jpeg',
+        'svg' => 'image/svg+xml',
+        'ico' => 'image/x-icon',
+        'json' => 'application/json'
+    ];
+    $contentType = isset($mimes[$ext]) ? $mimes[$ext] : mime_content_type($target);
+    header('Content-Type: ' . ($contentType ?: 'application/octet-stream'));
+    readfile($target);
     exit;
 }
 
-// Cek file di dalam folder actions/ (misal /actions/AuthAction.php)
-if (strpos($path, 'actions/') === 0 && file_exists(__DIR__ . '/../' . $path)) {
-    require __DIR__ . '/../' . $path;
+// 3. Match tanpa ekstensi .php (misal: /login atau /jadwal atau /nilai)
+if (file_exists($target . '.php')) {
+    require $target . '.php';
     exit;
 }
 
-// Fallback 404
+// 4. Fallback 404
 http_response_code(404);
-echo "<!DOCTYPE html><html><head><title>404 Not Found</title></head><body style='font-family:sans-serif;text-align:center;padding:50px;'>";
-echo "<h1>404 - Halaman Tidak Ditemukan</h1>";
-echo "<p><a href='/'>Kembali ke Beranda</a></p>";
+echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>404 Not Found</title></head><body style='font-family:sans-serif;text-align:center;padding:50px;'>";
+echo "<h2>Halaman Tidak Ditemukan (404)</h2>";
+echo "<p><a href='/login.php'>Masuk ke SIA Mahasiswa</a></p>";
 echo "</body></html>";
 exit;
